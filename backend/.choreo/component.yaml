@@ -11,5 +11,5 @@ endpoints:
         - Public
 dependencies:
     connectionReferences:
-    - name: openai-connection
-      resourceRef: thirdparty:openai/v1
+    - name: openai-coonection
+      resourceRef: service:/ai-adventure-tour/openaiapi/v1/proxy/PROJECT
