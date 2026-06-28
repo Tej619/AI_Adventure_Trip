@@ -16,8 +16,8 @@ function ThemeInput({onSubmit}) {
     }
 
     return <div className="theme-input-container">
-        <h2>Generate Your Adventure</h2>
-        <p>Enter a theme for your interactive story</p>
+        <h2>Generate Your Dynamic Adventure Story</h2>
+        <p>Enter a theme for your Adventure story</p>
 
         <form onSubmit={handleSubmit}>
             <div className="input-group">
@@ -25,13 +25,13 @@ function ThemeInput({onSubmit}) {
                     type="text"
                     value={theme}
                     onChange={(e) => setTheme(e.target.value)}
-                    placeholder="Enter a theme (e.g. prirates, space, medieval...)"
+                    placeholder="Enter a theme (e.g. pirates, space, fiction...)"
                     className={error ? 'error' : ''}
                 />
                 {error && <p className="error-text">{error}</p>}
             </div>
             <button type="submit" className='generate-btn'>
-                Generate Story
+                Generate your Story
             </button>
         </form>
     </div>

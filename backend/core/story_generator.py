@@ -1,3 +1,4 @@
+from xmlrpc import client
 from sqlalchemy.orm import Session
 
 from langchain_openai import ChatOpenAI
@@ -9,6 +10,7 @@ from models.story import Story, StoryNode
 from core.models import StoryLLMResponse, StoryNodeLLM
 from dotenv import load_dotenv
 import os
+from openai import OpenAI
 
 load_dotenv()
 
@@ -16,14 +18,18 @@ class StoryGenerator:
 
     @classmethod
     def _get_llm(cls):
-        openai_api_key = os.getenv("OPENAI_API_KEY")
-        serviceurl = os.getenv("CHOREO_OPENAI_CONNECTION_SERVICEURL")
+        # openai_api_key = os.getenv("OPENAI_API_KEY")
+        # serviceurl = os.getenv("CHOREO_OPENAI_CONNECTION_SERVICEURL")
 
-        if openai_api_key and serviceurl:
-            # return ChatOpenAI(model="gpt-4o-mini", api_key=openai_api_key, base_url=serviceurl)
-            return ChatOpenAI(model="gpt-4o-mini", api_key=openai_api_key)
+        # if openai_api_key and serviceurl:
+        #     # return ChatOpenAI(model="gpt-4o-mini", api_key=openai_api_key, base_url=serviceurl)
+        #     return ChatOpenAI(model="gpt-4o-mini", api_key=openai_api_key)
+        client = OpenAI()
 
-        return ChatOpenAI(model="gpt-4o-mini")
+        for model in client.models.list().data:
+            print(model.id)
+
+        return ChatOpenAI(model="gpt-4.1-mini", api_key=os.getenv("OPENAI_API_KEY"))
 
     @classmethod
     def generate_story(cls, db: Session, session_id: str, theme: str = "fantasy")-> Story:
