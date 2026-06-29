@@ -114,7 +114,6 @@ button:active {
 .input-group {
   margin-bottom: 25px;
 }
-
 .input-group input {
   width: 100%;
   padding: 16px;
@@ -122,6 +121,7 @@ button:active {
   border-radius: 12px;
   border: 2px solid transparent;
   background: #f7f9fc;
+  color: #000;
   transition: .3s;
 }
 
